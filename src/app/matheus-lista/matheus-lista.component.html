@@ -1,3 +1,46 @@
-<p>
-matheus-lista works
-</p>
+<h1>Lista de Disciplinas</h1>
+
+<div>
+  <label for="cod">Codigo</label><br />
+  <input #codigo id="cod" type="text" /><br />
+  <label for="title">Disciplina</label><br />
+  <input #materia id="title" type="text" /><br />
+  <label for="dia">Dia</label><br />
+  <input #dia type="text" id="dia" /><br />
+  <label for="hora">Horário</label><br />
+  <input #horario type="text" id="hora" /><br />
+  <label for="emen">Ementa</label><br />
+  <input #ementa id="emen" type="text" /><br />
+  <label for="obj">Objetivos</label><br />
+  <input #objetivos id="obj" type="text" /><br />
+  <button
+    (click)="
+      disciplinas.setLista(
+        codigo.value,
+        materia.value,
+        dia.value,
+        horario.value,
+        ementa.value,
+        objetivos.value
+      )
+    "
+  >
+    Adicionar
+  </button>
+</div>
+
+<table>
+  <tr>
+    <th>Código</th>
+    <th>Matéria</th>
+    <th>Dia</th>
+    <th>Horário</th>
+  </tr>
+  <tr *ngFor="let materia of disciplinas.getLista(); index as i">
+    <a [routerLink]="['/lista', i]">{{ materia.codigo }}</a>
+    <td>{{ materia.materia }}</td>
+    <td>{{ materia.dia }}</td>
+    <td>{{ materia.horario }}</td>
+    <td><button (click)="disciplinas.deleteItem(i)">Excluir</button></td>
+  </tr>
+</table>

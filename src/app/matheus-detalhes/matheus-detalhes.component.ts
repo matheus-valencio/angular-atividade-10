@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MatheusDisciplinasService } from '../matheus-disciplinas.service';
 
 @Component({
   selector: 'app-matheus-detalhes',
@@ -6,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./matheus-detalhes.component.css'],
 })
 export class MatheusDetalhesComponent implements OnInit {
-  constructor() {}
+  item;
+  constructor(
+    public disciplinas: MatheusDisciplinasService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      this.item = this.disciplinas.getLista()[params.get('index')];
+    });
+  }
 }
