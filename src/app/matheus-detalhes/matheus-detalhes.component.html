@@ -1,14 +1,18 @@
-<br /><br />
-<button type="button" [routerLink]="['/lista']">VOLTAR</button>
-<br /><br />
-<h2>[{{ item.codigo }}] - {{ item.materia }}</h2>
-<p>
-  <strong>Dia:</strong> {{ item.dia }} - <strong>Horário:</strong>
-  {{ item.horario }}
-</p>
-<br />
-<h3>Ementa</h3>
-<div>{{ item.ementa }}</div>
-<br /><br />
-<h3>Objetivos</h3>
-<div>{{ item.objetivos }}</div>
+<div class="container">
+  <br /><br />
+  <button class="btn btn-dark" type="button" [routerLink]="['/lista']">
+    VOLTAR
+  </button>
+  <br /><br />
+  <h2>[{{ item.codigo }}] - {{ item.materia }}</h2>
+  <p>
+    <strong>Dia:</strong> {{ item.dia }} - <strong>Horário:</strong>
+    {{ item.horario }}
+  </p>
+  <br />
+  <h3>Ementa</h3>
+  <div>{{ item.ementa }}</div>
+  <br /><br />
+  <h3>Objetivos</h3>
+  <div>{{ item.objetivos }}</div>
+</div>

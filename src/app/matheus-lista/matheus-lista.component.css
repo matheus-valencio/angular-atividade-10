@@ -1,0 +1,13 @@
+.btn-danger {
+  background-color: red;
+}
+
+:-moz-placeholder {
+  color: grey;
+}
+:-ms-input-placeholder {
+  color: grey;
+}
+::-webkit-input-placeholder {
+  color: rgb(179, 179, 179);
+}

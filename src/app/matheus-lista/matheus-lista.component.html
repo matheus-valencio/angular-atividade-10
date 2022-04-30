@@ -1,23 +1,9 @@
-<h1>Lista de Disciplinas</h1>
-
-<div>
-  <button
-    (click)="
-      disciplinas.setLista(
-        codigo.value,
-        materia.value,
-        dia.value,
-        horario.value,
-        ementa.value,
-        objetivos.value
-      )
-    "
-  >
-    Adicionar
-  </button>
-</div>
-<br />
 <div class="container">
+  <br />
+  <h1>Adicionar Disciplina</h1>
+
+  <br />
+
   <div class="row">
     <div class="col-2">
       <label for="cod" class="form-label">Codigo</label>
@@ -27,7 +13,7 @@
         type="text"
         type="text"
         class="form-control"
-        placeholder="Código"
+        placeholder="AAA000"
       />
     </div>
     <div class="col-4">
@@ -37,12 +23,18 @@
         id="title"
         type="text"
         class="form-control"
-        placeholder="Matéria"
+        placeholder="Nome da matéria"
       />
     </div>
     <div class="col-2">
       <label for="dia" class="form-label">Dia</label>
-      <input #dia id="dia" type="text" class="form-control" placeholder="Dia" />
+      <input
+        #dia
+        id="dia"
+        type="text"
+        class="form-control"
+        placeholder="Segunda-Feira"
+      />
     </div>
     <div class="col-2">
       <label for="hora" class="form-label">Horário</label>
@@ -51,7 +43,7 @@
         id="hora"
         type="text"
         class="form-control"
-        placeholder="Horário"
+        placeholder="00:00-00:00"
       />
     </div>
   </div>
@@ -59,30 +51,71 @@
   <div class="row">
     <div class="col-5">
       <label for="emen" class="form-label">Ementa</label>
-      <textarea #ementa class="form-control" id="emen" rows="2"></textarea>
+      <textarea
+        #ementa
+        class="form-control"
+        id="emen"
+        rows="2"
+        placeholder="Descrição da ementa da matéria"
+      ></textarea>
     </div>
     <div class="col-5">
       <label for="obj" class="form-label">Objetivos</label>
-      <textarea #objetivos class="form-control" id="emen" rows="2"></textarea>
+      <textarea
+        #objetivos
+        class="form-control"
+        id="emen"
+        rows="2"
+        placeholder="Descrição dos objetivos da matéria"
+      ></textarea>
     </div>
   </div>
-</div>
-<br />
-<table class="table">
-  <thead class="table-dark">
-    <tr>
-      <th>Código</th>
-      <th>Matéria</th>
-      <th>Dia</th>
-      <th>Horário</th>
-      <th></th>
+  <br />
+  <div>
+    <button
+      class="btn btn-success btn-lg"
+      (click)="
+        disciplinas.setLista(
+          codigo.value,
+          materia.value,
+          dia.value,
+          horario.value,
+          ementa.value,
+          objetivos.value
+        )
+      "
+    >
+      Adicionar
+    </button>
+  </div>
+
+  <br />
+  <h1>Lista de Disciplinas</h1>
+  <br />
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Código</th>
+        <th>Matéria</th>
+        <th>Dia</th>
+        <th>Horário</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr *ngFor="let materia of disciplinas.getLista(); index as i">
+      <a [routerLink]="['/lista', i]">{{ materia.codigo }}</a>
+      <td>{{ materia.materia }}</td>
+      <td>{{ materia.dia }}</td>
+      <td>{{ materia.horario }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="disciplinas.deleteItem(i)"
+        >
+          Excluir
+        </button>
+      </td>
     </tr>
-  </thead>
-  <tr *ngFor="let materia of disciplinas.getLista(); index as i">
-    <a [routerLink]="['/lista', i]">{{ materia.codigo }}</a>
-    <td>{{ materia.materia }}</td>
-    <td>{{ materia.dia }}</td>
-    <td>{{ materia.horario }}</td>
-    <td><button (click)="disciplinas.deleteItem(i)">Excluir</button></td>
-  </tr>
-</table>
+  </table>
+</div>

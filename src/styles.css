@@ -1,4 +1,8 @@
 /* Add application styles & imports to this file! */
+
 body {
   background-color: rgb(240, 240, 240);
+}
+.container {
+  width: 80vw;
 }
