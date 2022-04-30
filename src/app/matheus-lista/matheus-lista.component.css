@@ -1,7 +1,9 @@
 .btn-danger {
   background-color: red;
 }
-
+.table {
+  width: 65vw;
+}
 :-moz-placeholder {
   color: grey;
 }
